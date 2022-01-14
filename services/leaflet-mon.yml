@@ -1,0 +1,14 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: leaflet-mon
+  labels:
+    application: leaflet
+    release: mon
+spec:
+  selector:
+    matchLabels:
+      application: leaflet
+  endpoints: 
+  - port: health
+    interval: 3s

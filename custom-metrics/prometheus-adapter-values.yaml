@@ -1,0 +1,17 @@
+prometheus:
+  url: http://mon-kube-prometheus-stack-prometheus.monitoring.svc
+  port: 9090
+
+rules:
+  default: false
+  custom:
+  - seriesQuery: '{namespace="default",service="leaflet"}'
+    resources:
+      overrides:
+        namespace:
+          resource: "namespace"
+        service:
+          resource: "service"
+    name:
+      as: "connected_clients_by_pod"
+    metricsQuery: 'avg(custom_metrics_connected_clients_by_pod{pod=~"leaflet-(.*)-(.*)",service="leaflet",namespace="default",container="leaflet"}) by (service)'

@@ -1,0 +1,35 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: leaflet-fireacademy-io
+  annotations:
+    kubernetes.digitalocean.com/load-balancer-id: "leaflet-fireacademy-io"
+    service.beta.kubernetes.io/do-loadbalancer-size-unit: "1"
+    service.beta.kubernetes.io/do-loadbalancer-protocol: "https"
+    service.beta.kubernetes.io/do-loadbalancer-tls-passthrough: "false"
+    service.beta.kubernetes.io/do-loadbalancer-certificate-id: "ad838de9-e6e1-4dd7-8764-3fad45447585"
+    service.beta.kubernetes.io/do-loadbalancer-tls-ports: "18444"
+    service.beta.kubernetes.io/do-loadbalancer-healthcheck-port: "18444"
+    service.beta.kubernetes.io/do-loadbalancer-healthcheck-protocol: "http"
+    service.beta.kubernetes.io/do-loadbalancer-healthcheck-path: "/ready"
+    service.beta.kubernetes.io/do-loadbalancer-healthcheck-check-interval-seconds: "3"
+    service.beta.kubernetes.io/do-loadbalancer-healthcheck-response-timeout-seconds: "5"
+    service.beta.kubernetes.io/do-loadbalancer-healthcheck-unhealthy-threshold: "2"
+    service.beta.kubernetes.io/do-loadbalancer-healthcheck-healthy-threshold: "10"
+    service.beta.kubernetes.io/do-loadbalancer-redirect-http-to-https: "true"
+    service.beta.kubernetes.io/do-loadbalancer-algorithm: "least_connections"
+    service.beta.kubernetes.io/do-loadbalancer-enable-backend-keepalive: "true"
+spec:
+  type: LoadBalancer
+  selector:
+    application: leaflet
+    service: leaflet
+  ports:
+    - name: https
+      protocol: TCP
+      port: 443
+      targetPort: 18444
+    - name: https-default
+      protocol: TCP
+      port: 18444
+      targetPort: 18444
