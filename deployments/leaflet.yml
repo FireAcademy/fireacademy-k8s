@@ -24,6 +24,7 @@ spec:
       annotations:
         prometheus.io/scrape: 'true'
     spec:
+      terminationGracePeriodSeconds: 86400
       containers:
         - name: leaflet
           image: ghcr.io/fireacademy/leaflet:1.0.5
@@ -38,7 +39,6 @@ spec:
                 secretKeyRef:
                   name: firebase
                   key: creds
-          terminationGracePeriodSeconds: 86400
           ports:
             - name: http
               containerPort: 18444
