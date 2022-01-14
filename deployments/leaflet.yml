@@ -24,10 +24,10 @@ spec:
       annotations:
         prometheus.io/scrape: 'true'
     spec:
-      terminationGracePeriodSeconds: 86400
+      terminationGracePeriodSeconds: 0
       containers:
         - name: leaflet
-          image: ghcr.io/fireacademy/leaflet:1.0.5
+          image: ghcr.io/fireacademy/leaflet:1.0.7
           env:
             - name: FASTSYNC_URL
               valueFrom:

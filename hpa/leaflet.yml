@@ -1,4 +1,4 @@
-apiVersion: autoscaling/v2beta1
+apiVersion: autoscaling/v2beta2
 kind: HorizontalPodAutoscaler
 metadata:
   name: leaflet-hpa
@@ -9,11 +9,20 @@ spec:
     name: leaflet
   minReplicas: 1
   maxReplicas: 7
+  behavior:
+    scaleDown:
+      selectPolicy: Disabled
+    scaleUp:
+      policies:
+      - type: Pods
+        value: 1
+        periodSeconds: 900
   metrics:
-  - type: Object
-    object:
+  - type: Pods
+    pods:
       target:
-        kind: Service
-        name: leaflet
-      metricName: connected_clients_by_pod
-      targetValue: 42
+        type: AverageValue
+        averageValue: 42
+      metric:
+        name: connected_clients_by_pod
+  
