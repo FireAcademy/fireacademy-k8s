@@ -24,16 +24,15 @@ spec:
       annotations:
         prometheus.io/scrape: 'true'
     spec:
-      terminationGracePeriodSeconds: 0
       containers:
         - name: leaflet
-          image: ghcr.io/fireacademy/leaflet:1.0.7
+          image: ghcr.io/fireacademy/leaflet:1.1.4
           env:
-            - name: FASTSYNC_URL
+            - name: FASTSYNC_CMD
               valueFrom:
                 secretKeyRef:
                   name: fastsync
-                  key: url
+                  key: cmd
             - name: FIREBASE_CREDS
               valueFrom:
                 secretKeyRef:
@@ -53,6 +52,6 @@ spec:
               path: /ready
               port: 18444
               scheme: HTTP
-            initialDelaySeconds: 420
-            failureThreshold: 90  
+            initialDelaySeconds: 900
+            failureThreshold: 30 
             periodSeconds: 10

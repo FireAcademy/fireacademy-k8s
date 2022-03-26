@@ -7,7 +7,7 @@ metadata:
     service.beta.kubernetes.io/do-loadbalancer-size-unit: "1"
     service.beta.kubernetes.io/do-loadbalancer-protocol: "https"
     service.beta.kubernetes.io/do-loadbalancer-tls-passthrough: "false"
-    service.beta.kubernetes.io/do-loadbalancer-certificate-id: "ad838de9-e6e1-4dd7-8764-3fad45447585"
+    service.beta.kubernetes.io/do-loadbalancer-certificate-id: "0a5b911d-e11d-4977-99f3-d8000906107e"
     service.beta.kubernetes.io/do-loadbalancer-tls-ports: "18444"
     service.beta.kubernetes.io/do-loadbalancer-healthcheck-port: "18444"
     service.beta.kubernetes.io/do-loadbalancer-healthcheck-protocol: "http"

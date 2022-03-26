@@ -10,19 +10,20 @@ spec:
   minReplicas: 1
   maxReplicas: 7
   behavior:
-    scaleDown:
-      selectPolicy: Disabled
     scaleUp:
       policies:
       - type: Pods
         value: 1
-        periodSeconds: 900
+        periodSeconds: 480
   metrics:
-  - type: Pods
-    pods:
-      target:
-        type: AverageValue
-        averageValue: 42
+  - type: Object
+    object:
       metric:
         name: connected_clients_by_pod
-  
+      describedObject:
+        apiVersion: /v1
+        kind: Service
+        name: leaflet
+      target:
+        type: Value
+        value: 75
