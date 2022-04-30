@@ -27,3 +27,26 @@ spec:
       target:
         type: Value
         value: 75
+  - type: Object
+    object:
+      metric:
+        name: rpc_calls_last_minute_by_pod
+      describedObject:
+        apiVersion: /v1
+        kind: Service
+        name: leaflet
+      target:
+        type: Value
+        value: 12
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 70
+  - type: Resource
+    resource:
+      name: memory
+      target:
+        type: Utilization
+        averageUtilization: 80

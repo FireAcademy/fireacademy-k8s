@@ -11,4 +11,4 @@ spec:
       application: leaflet
   endpoints: 
   - port: health
-    interval: 3s
+    interval: 10s
