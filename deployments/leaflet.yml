@@ -27,7 +27,7 @@ spec:
       terminationGracePeriodSeconds: 120
       containers:
         - name: leaflet
-          image: ghcr.io/fireacademy/leaflet:1.2.0
+          image: ghcr.io/fireacademy/leaflet:1.2.2
           env:
             - name: FASTSYNC_CMD
               valueFrom:
